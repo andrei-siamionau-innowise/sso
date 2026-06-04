@@ -1,0 +1,43 @@
+{
+  "realm": "demo",
+  "enabled": true,
+
+  "clients": [
+    {
+      "clientId": "customer-app",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "customer-secret",
+
+      "redirectUris": [
+        "http://localhost:8081/login/oauth2/code/keycloak"
+      ]
+    },
+
+    {
+      "clientId": "payment-app",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "payment-secret",
+
+      "redirectUris": [
+        "http://localhost:8082/login/oauth2/code/keycloak"
+      ]
+    }
+  ],
+
+  "users": [
+    {
+      "username": "andrey",
+      "enabled": true,
+
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

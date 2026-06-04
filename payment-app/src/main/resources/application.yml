@@ -1,0 +1,28 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: payment-app
+
+  security:
+    oauth2:
+      client:
+
+        registration:
+          keycloak:
+            client-id: payment-app
+            client-secret: payment-secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - openid
+              - profile
+
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8080/realms/demo/protocol/openid-connect/auth
+            token-uri: http://keycloak:8080/realms/demo/protocol/openid-connect/token
+            user-info-uri: http://keycloak:8080/realms/demo/protocol/openid-connect/userinfo
+            jwk-set-uri: http://keycloak:8080/realms/demo/protocol/openid-connect/certs
+            user-name-attribute: preferred_username
